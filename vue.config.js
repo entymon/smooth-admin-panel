@@ -3,16 +3,11 @@ module.exports = {
 		loaderOptions: {
 			sass: {
 				data: `
-          @import "@/styles/_main.scss";
+					@import "@/styles/_main.scss";
+          @import "~bootstrap/dist/css/bootstrap.css";
+					@import "~bootstrap-vue/dist/bootstrap-vue.css";
         `
 			}
 		}
 	}
-	// configureWebpack: {
-	// 	resolve: {
-	// 		alias: {
-	// 			vue: './dist/main.js'
-	// 		}
-	// 	}
-	// }
 };
