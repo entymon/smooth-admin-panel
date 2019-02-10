@@ -7,7 +7,6 @@
 
 <script>
   import PostListRow from '../../components/blog/PostListRow';
-  import { postData } from '../../services/TemporaryData';
 
   export default {
     name: 'ListPage',

@@ -48,7 +48,6 @@
 <script>
 	import axios from 'axios';
 	import _ from 'lodash';
-  import { postData } from '../../services/TemporaryData';
 
   export default {
     name: 'PostCreate',
@@ -60,10 +59,14 @@
 				author: 'entymon'
 			},
 		}),
+		computed: {
+      posts() {
+        return this.$store.state.posts;
+			}
+		},
 		beforeMount() {
-      console.log(this.$route.params.uuid)
 			if (this.$route.params.uuid) {
-				this.post = _.find(postData, {uuid: this.$route.params.uuid})
+				this.post = _.find(this.posts, {uuid: this.$route.params.uuid})
 				// axios.get('/get_post_by_uuid', res => {})
 			} else {
         this.post = {
