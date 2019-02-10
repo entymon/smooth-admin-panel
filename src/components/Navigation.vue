@@ -4,12 +4,12 @@
 
 			<b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-			<b-navbar-brand href="/">Dashboard</b-navbar-brand>
+			<router-link class="navbar-brand" :to="{ path: '/dashboard' }">Dashboard</router-link>
 
 			<b-collapse is-nav id="nav_collapse">
 
 				<b-navbar-nav>
-					<router-link class="nav-link" :to="{ name: 'post-list' }">List</router-link>
+					<router-link class="nav-link" :to="{ path: '/dashboard' }">List</router-link>
 				</b-navbar-nav>
 
 				<!-- Right aligned nav items -->
@@ -46,7 +46,7 @@
 		name: 'Navigation',
 		methods: {
       createPost() {
-        this.$router.push({ name: 'post-create' })
+        this.$router.push({ name: 'post' })
 			}
 		}
 	}

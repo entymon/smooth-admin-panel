@@ -17,6 +17,9 @@
 		components: {
 			'smooth-header': Header,
 			'smooth-footer': Footer
+		},
+		mounted() {
+		  console.log('test', this.$router)
 		}
 	}
 </script>

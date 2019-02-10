@@ -5,7 +5,7 @@
 		<div class="col-md-5">{{ post.description }}</div>
 		<div class="col-md-2">{{ post.imageUrl }}</div>
 		<div class="col-md-2">
-			<b-button class="mr-md-2">edit</b-button>
+			<b-button @click=editRow class="mr-md-2">edit</b-button>
 			<b-button variant="danger">remove</b-button>
 		</div>
 	</div>
@@ -14,9 +14,12 @@
 <script>
   export default {
     name: 'PostListRow',
-		props: {
-      post: Object
-    }
+		props: ['post'],
+		methods: {
+      editRow() {
+        this.$emit('editPost', this.post.uuid)
+			}
+		}
   }
 </script>
 

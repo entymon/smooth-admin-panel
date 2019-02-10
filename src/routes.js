@@ -2,9 +2,7 @@ import RootPage from './pages/RootPage'
 import DashboardPage from './pages/DashboardPage'
 import LoginPage from './pages/LoginPage'
 import ListPage from './pages/dashboard/PostList'
-import PostCreate from './pages/dashboard/PostCreate'
-import PostView from './pages/dashboard/PostView'
-import PostEdit from './pages/dashboard/PostEdit'
+import PostForm from './pages/dashboard/PostForm'
 
 export default [
 	{ path: '/', name: 'root', component: RootPage},
@@ -19,21 +17,19 @@ export default [
 				component: ListPage
 			},
       {
-				name: 'post-create',
-        path: 'post/create',
-        component: PostCreate
-      },
-      {
-				name: 'post-edit',
-        path: 'post/edit/:uuid',
-        component: PostEdit
-      },
-      {
-				name: 'post-view',
-        path: 'post/view',
-        component: PostView
-      },
-		]
+				name: 'post',
+        path: 'post/:uuid?',
+        component: PostForm
+      }
+		],
 	},
-	{ path: '/login', name: 'login', component: LoginPage}
+	{
+		path: '/login',
+		name: 'login',
+		component: LoginPage
+	},
+  {
+    path: '*',
+    redirect: 'dashboard'
+  },
 ]

@@ -1,7 +1,7 @@
 <template>
 	<div class="container-fluid">
 		<h3 class="header">List of posts</h3>
-		<list-row v-bind:key="post.uuid" v-for="post in posts" :post="post" />
+		<list-row :key="post.uuid" v-for="post in posts" :post="post" @editPost="updatePost"/>
 	</div>
 </template>
 
@@ -34,7 +34,12 @@
           imageUrl: 'obrazek'
         }
       ]
-    })
+    }),
+		methods: {
+      updatePost(postUuid) {
+				this.$router.push({ name: 'post', params: { uuid: postUuid } })
+			}
+		}
   }
 </script>
 

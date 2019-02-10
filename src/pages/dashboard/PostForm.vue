@@ -59,13 +59,16 @@
 				author: 'entymon'
 			},
 		}),
+		beforeMount() {
+			console.log('router', this.$router)
+		},
 		methods: {
       onSubmit(event) {
         event.preventDefault()
+				// valid and send form
 			},
       onFileSelected(event) {
         this.post.image = event.target.files[0];
-        console.log(event)
 			},
 			onUpload() {
         const fd = new FormData();
