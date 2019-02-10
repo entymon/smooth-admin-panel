@@ -1,31 +1,39 @@
 <template>
-	<div class="container">
-		<b-form @submit="onSubmit" @reset="onReset">
-			<b-form-group id="exampleInputGroup1"
-										label="Email address:"
-										label-for="exampleInput1"
-										description="We'll never share your email with anyone else.">
-				<b-form-input id="exampleInput1"
-											type="text"
-											v-model="form.email"
-											required
-											placeholder="Enter email">
-				</b-form-input>
-			</b-form-group>
-			<b-form-group id="exampleInputGroup2"
-										label="Password:"
-										label-for="exampleInput2">
-				<b-form-input id="exampleInput2"
-											type="password"
-											v-model="form.password"
-											placeholder="Enter password">
-				</b-form-input>
-			</b-form-group>
+	<div class="container smooth-page login-page">
+		<div class="row">
 
-			<div>{{ formError }}</div>
+			<div class="col-lg-4 col-sm-0"></div>
+			<div class="col-lg-4 col-sm-12">
+				<b-form @submit="onSubmit" @reset="onReset">
+					<b-form-group id="exampleInputGroup1"
+												label="Email address:"
+												label-for="exampleInput1"
+												description="We'll never share your email with anyone else.">
+						<b-form-input id="exampleInput1"
+													type="text"
+													v-model="form.email"
+													required
+													placeholder="Enter email">
+						</b-form-input>
+					</b-form-group>
+					<b-form-group id="exampleInputGroup2"
+												label="Password:"
+												label-for="exampleInput2">
+						<b-form-input id="exampleInput2"
+													type="password"
+													v-model="form.password"
+													placeholder="Enter password">
+						</b-form-input>
+					</b-form-group>
 
-			<b-button type="submit" variant="primary">Sign in</b-button>
-		</b-form>
+					<div>{{ formError }}</div>
+
+					<b-button type="submit" variant="primary">Sign in</b-button>
+				</b-form>
+			</div>
+			<div class="col-lg-4 col-sm-0"></div>
+
+		</div>
 	</div>
 </template>
 
@@ -47,10 +55,10 @@
 				const valid = LoginService.validate(this.form);
 				if (!valid) {
 					this.formError = LoginService.getErrorMessage()
+				} else {
+					localStorage.token = 'test token';
+					this.$router.push('dashboard')
 				}
-
-				this.$router.push('/home')
-				// alert(JSON.stringify(this.form));
 			},
 			onReset(evt) {
 				evt.preventDefault();
@@ -62,6 +70,8 @@
 	}
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+	.login-page {
+		margin-top: 60px;
+	}
 </style>

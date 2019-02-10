@@ -1,5 +1,9 @@
 <template>
-	
+	<div class="footer container">
+		<div class="copyright">
+			Copyright Smooth Code Line Ltd. 2019
+		</div>
+	</div>
 </template>
 
 <script>
@@ -8,6 +12,16 @@
 	}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+	.footer {
+		position: fixed;
+		bottom: 0;
 
+		.copyright {
+			padding: 10px;
+			background-color: $black;
+			color: $white;
+			text-align: center;
+		}
+	}
 </style>

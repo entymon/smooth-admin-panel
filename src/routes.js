@@ -1,9 +1,9 @@
 import RootPage from './components/RootPage'
-import HomePage from './components/HomePage'
+import DashboardPage from './components/DashboardPage'
 import LoginPage from './components/LoginPage'
 
 export default [
-	{ path: '/', component: RootPage},
-	{ path: '/home', component: HomePage},
-	{ path: '/login', component: LoginPage}
+	{ path: '/', name: 'root', component: RootPage},
+	{ path: '/dashboard', name: 'dashboard', component: DashboardPage},
+	{ path: '/login', name: 'login', component: LoginPage}
 ]
