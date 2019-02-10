@@ -19,7 +19,5 @@
 </script>
 
 <style scoped lang="scss">
-	.page-dashboard {
-		margin-top: 20px;
-	}
+	.page-dashboard {}
 </style>

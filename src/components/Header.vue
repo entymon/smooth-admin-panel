@@ -1,11 +1,20 @@
 <template>
-	<div>Header</div>
+	<div class="container">
+		<div class="menu-navigation">
+			<smooth-navigation/>
+		</div>
+	</div>
 </template>
 
 <script>
-	export default {
-		name: 'Header'
-	}
+  import Navigation from './Navigation'
+
+  export default {
+    name: 'Header',
+    components: {
+      'smooth-navigation': Navigation
+    }
+  }
 </script>
 
 <style scoped>
