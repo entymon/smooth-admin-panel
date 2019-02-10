@@ -6,7 +6,8 @@
 </template>
 
 <script>
-  import PostListRow from '../../components/blog/PostListRow'
+  import PostListRow from '../../components/blog/PostListRow';
+  import { postData } from '../../services/TemporaryData';
 
   export default {
     name: 'ListPage',
@@ -14,26 +15,7 @@
       'list-row': PostListRow
     },
     data: () => ({
-      posts: [
-        {
-          uuid: '1',
-          title: 'Test11 Title',
-          description: 'Someqwewe wewew e wqe  e w ewew e wq ewqe',
-          imageUrl: 'obrazek'
-        },
-        {
-          uuid: '2',
-          title: 'Test22 Title',
-          description: 'Someqwewe wewew e wqe  e w ewew e wq ewqe',
-          imageUrl: 'obrazek'
-        },
-        {
-          uuid: '3',
-          title: 'Test33 Title',
-          description: 'Someqwewe wewew e wqe  e w ewew e wq ewqe',
-          imageUrl: 'obrazek'
-        }
-      ]
+      posts: postData
     }),
 		methods: {
       updatePost(postUuid) {

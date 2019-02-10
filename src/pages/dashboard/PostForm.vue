@@ -48,6 +48,8 @@
 
 <script>
 	import axios from 'axios';
+	import _ from 'lodash';
+  import { postData } from '../../services/TemporaryData';
 
   export default {
     name: 'PostCreate',
@@ -60,7 +62,10 @@
 			},
 		}),
 		beforeMount() {
-			console.log('router', this.$router)
+			if (this.$route.params.uuid) {
+				this.post = _.find(postData, {uuid: this.$route.params.uuid})
+				// axios.get('/get_post_by_uuid', res => {})
+			}
 		},
 		methods: {
       onSubmit(event) {
