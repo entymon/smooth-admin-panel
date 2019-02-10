@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h3 class="header">List of posts</h3>
-		<list-row/>
+		<list-row v-bind:key="post.uuid" v-for="post in posts" :post="post" />
 	</div>
 </template>
 
@@ -12,7 +12,29 @@
     name: 'PostList',
 		components: {
       'list-row': PostListRow
-		}
+		},
+    data: () => ({
+      posts: [
+        {
+          uuid: '1',
+          title: 'Test11 Title',
+          description: 'Someqwewe wewew e wqe  e w ewew e wq ewqe',
+          imageUrl: 'obrazek'
+        },
+        {
+          uuid: '2',
+          title: 'Test22 Title',
+          description: 'Someqwewe wewew e wqe  e w ewew e wq ewqe',
+          imageUrl: 'obrazek'
+        },
+        {
+          uuid: '3',
+          title: 'Test33 Title',
+          description: 'Someqwewe wewew e wqe  e w ewew e wq ewqe',
+          imageUrl: 'obrazek'
+        }
+      ]
+    })
   }
 </script>
 
