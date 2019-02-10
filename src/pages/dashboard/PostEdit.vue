@@ -5,8 +5,16 @@
 </template>
 
 <script>
+  import Wysiwyg from "vue-wysiwyg";
+
   export default {
-    name: 'PostEdit'
+    name: 'PostEdit',
+		components: {
+      'wysiwyg': Wysiwyg
+		},
+		data: () => {
+      myHTML: ''
+		}
   }
 </script>
 

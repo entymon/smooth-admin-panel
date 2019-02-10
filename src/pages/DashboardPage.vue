@@ -1,7 +1,9 @@
 <template>
 	<div class="container smooth-page page-dashboard">
 		<smooth-header/>
-			<router-view></router-view>
+		<div class="smooth-content">
+			<router-view/>
+		</div>
 		<smooth-footer/>
 	</div>
 </template>
@@ -22,5 +24,8 @@
 <style lang="scss">
 	h3.header {
 		padding: 15px 0;
+	}
+	.smooth-content {
+		margin-bottom: 60px;
 	}
 </style>

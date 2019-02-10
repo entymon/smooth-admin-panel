@@ -19,6 +19,7 @@
 	.footer {
 		position: fixed;
 		bottom: 0;
+		margin-top: 30px;
 
 		.copyright {
 			padding: 10px;
