@@ -11,6 +11,7 @@
 <script>
 	import Header from '../components/Header';
 	import Footer from '../components/Footer';
+  import LoginService from '../services/LoginService'
 
 	export default {
 		name: 'HomePage',
@@ -18,8 +19,10 @@
 			'smooth-header': Header,
 			'smooth-footer': Footer
 		},
-		mounted() {
-		  console.log('test', this.$router)
+		beforeUpdate() {
+      if (!LoginService.isLogged()) {
+        this.$router.push('login')
+      }
 		}
 	}
 </script>

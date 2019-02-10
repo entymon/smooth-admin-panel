@@ -31,7 +31,7 @@
 						<template slot="button-content">
 							<em>User</em>
 						</template>
-						<b-dropdown-item href="#">Signout</b-dropdown-item>
+						<b-dropdown-item @click="userLogout">Signout</b-dropdown-item>
 					</b-nav-item-dropdown>
 				</b-navbar-nav>
 
@@ -42,11 +42,17 @@
 </template>
 
 <script>
+  import LoginService from '../services/LoginService'
+
 	export default {
 		name: 'Navigation',
 		methods: {
       createPost() {
         this.$router.push({ name: 'post' })
+			},
+			userLogout() {
+        LoginService.logout();
+        this.$router.push({ name: 'dashboard' })
 			}
 		}
 	}

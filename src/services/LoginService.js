@@ -31,4 +31,17 @@ export default class LoginService {
 		const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		return re.test(String(email).toLowerCase());
 	}
+	
+	static logout() {
+    localStorage.token = '';
+    localStorage.removeItem('token');
+	}
+	
+	static login(token) {
+    localStorage.token = token
+	}
+	
+	static isLogged() {
+    return (localStorage.token && localStorage.token !== '')
+	}
 }

@@ -42,7 +42,6 @@
 			<b-button type="submit" variant="primary">Submit</b-button>
 
 		</b-form>
-		{{ post.body }}
 	</div>
 </template>
 

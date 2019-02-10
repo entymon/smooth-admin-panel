@@ -56,7 +56,7 @@
 				if (!valid) {
 					this.formError = LoginService.getErrorMessage()
 				} else {
-					localStorage.token = 'test token';
+					LoginService.login('test token');
 					this.$router.push('dashboard')
 				}
 			},

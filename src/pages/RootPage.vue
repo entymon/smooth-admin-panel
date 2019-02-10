@@ -31,29 +31,25 @@
 </template>
 
 <script>
-export default {
-  name: 'RootPage',
-  props: {
-    msg: String,
-  },
-  data: () => ({
-    token: ''
-  }),
-  mounted() {
-    if (localStorage.token) {
-      this.token = localStorage.token;
-      this.$router.push('dashboard')
-    } else {
-      this.$router.push('login')
-    }
-  },
-  watch: {
-    token(newToken) {
-      localStorage.token = newToken
+  import LoginService from '../services/LoginService'
+
+  export default {
+    name: 'RootPage',
+    props: {
+      msg: String,
+    },
+    data: () => ({
+      token: ''
+    }),
+    mounted() {
+      if (LoginService.isLogged()) {
+        this.$router.push('dashboard')
+      } else {
+        this.$router.push('login')
+      }
     }
   }
-}
-</script>≤
+</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
