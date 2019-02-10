@@ -32,10 +32,18 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'RootPage',
   props: {
-    msg: String
-  }
+    msg: String,
+  },
+  data: () => ({
+	  token: ''
+  }),
+  mounted() {
+    if (localStorage.token) {
+    	this.token = localStorage.token
+    }
+  },
 }
 </script>
 
