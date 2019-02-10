@@ -46,6 +46,12 @@
 
 	export default {
 		name: 'Navigation',
+		data: () => ({
+			postCreate: true,
+		}),
+		render() {
+			console.log(this.$route)
+		},
 		methods: {
       createPost() {
         this.$router.push({ name: 'post' })

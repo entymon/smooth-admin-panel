@@ -14,9 +14,11 @@
     components: {
       'list-row': PostListRow
     },
-    data: () => ({
-      posts: postData
-    }),
+		computed: {
+      posts() {
+        return this.$store.state.posts
+			}
+		},
 		methods: {
       updatePost(postUuid) {
 				this.$router.push({ name: 'post', params: { uuid: postUuid } })

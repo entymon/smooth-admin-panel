@@ -2,8 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 import wysiwyg from 'vue-wysiwyg';
-import App from './App.vue'
-import Routes from './routes'
+import App from './App.vue';
+import Routes from './routes';
+import Store from './store';
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
@@ -26,6 +27,7 @@ const router = new VueRouter({
 });
 
 new Vue({
+  store: Store,
 	router,
   render: h => h(App)
 }).$mount('#vue-app');

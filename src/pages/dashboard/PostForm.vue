@@ -61,10 +61,21 @@
 			},
 		}),
 		beforeMount() {
+      console.log(this.$route.params.uuid)
 			if (this.$route.params.uuid) {
 				this.post = _.find(postData, {uuid: this.$route.params.uuid})
 				// axios.get('/get_post_by_uuid', res => {})
+			} else {
+        this.post = {
+          title: '',
+					body: '',
+					image: {},
+          author: 'entymon'
+        }
 			}
+		},
+		updated() {
+      console.log(this.post)
 		},
 		methods: {
       onSubmit(event) {
