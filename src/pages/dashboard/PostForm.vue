@@ -83,7 +83,6 @@
 		methods: {
       onSubmit(event) {
         event.preventDefault()
-
 				this.$store.dispatch('updatePost', this.post)
 
 				// valid and send form

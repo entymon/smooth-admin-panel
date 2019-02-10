@@ -49,9 +49,6 @@
 		data: () => ({
 			postCreate: true,
 		}),
-		render() {
-			console.log(this.$route)
-		},
 		methods: {
       createPost() {
         this.$router.push({ name: 'post' })

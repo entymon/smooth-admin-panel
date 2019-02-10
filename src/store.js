@@ -28,7 +28,6 @@ const store = new Vuex.Store({
         image: 'obrazek'
       }
     ],
-    routeName: ''
   },
   getters: {
     getUuids: (state) => {
@@ -36,18 +35,12 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    UPDATE_ROUTE_NAME(state, name) {
-      state.routeName = name
-    },
     UPDATE_POST(state, payload) {
       _.remove(state.posts, post => post.uuid === payload.uuid);
       state.posts.push(payload)
     }
   },
   actions: {
-    updateRouteName(context, name) {
-      context.commit('UPDATE_ROUTE_NAME', name)
-    },
     updatePost: (context, payload) => {
       context.commit('UPDATE_POST', payload)
     }
