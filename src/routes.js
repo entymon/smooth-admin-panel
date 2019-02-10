@@ -1,7 +1,7 @@
-import RootPage from './components/RootPage'
-import DashboardPage from './components/DashboardPage'
-import LoginPage from './components/LoginPage'
-import ListPage from './components/pages/ListPage'
+import RootPage from './pages/RootPage'
+import DashboardPage from './pages/DashboardPage'
+import LoginPage from './pages/LoginPage'
+import ListPage from './pages/dashboard/ListPage'
 
 export default [
 	{ path: '/', name: 'root', component: RootPage},

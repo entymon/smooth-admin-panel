@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import PostListRow from '../blog/PostListRow'
+  import PostListRow from '../../components/blog/PostListRow'
 
   export default {
     name: 'ListPage',
