@@ -8,7 +8,10 @@
 
 <script>
 	export default {
-		name: 'Footer'
+		name: 'Footer',
+		data: () => ({
+			year: (new Date()).getFullYear()
+		})
 	}
 </script>
 
