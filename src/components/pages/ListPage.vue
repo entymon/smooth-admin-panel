@@ -6,13 +6,13 @@
 </template>
 
 <script>
-	import PostListRow from './PostListRow'
+  import PostListRow from '../blog/PostListRow'
 
   export default {
-    name: 'PostList',
-		components: {
+    name: 'ListPage',
+    components: {
       'list-row': PostListRow
-		},
+    },
     data: () => ({
       posts: [
         {
