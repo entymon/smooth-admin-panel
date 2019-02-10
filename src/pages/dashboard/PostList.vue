@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="container-fluid">
 		<h3 class="header">List of posts</h3>
 		<list-row v-bind:key="post.uuid" v-for="post in posts" :post="post" />
 	</div>
@@ -39,7 +39,5 @@
 </script>
 
 <style scoped lang="scss">
-	.header {
-		padding: 15px 0;
-	}
+
 </style>

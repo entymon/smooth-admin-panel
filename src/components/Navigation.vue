@@ -4,19 +4,21 @@
 
 			<b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-			<b-navbar-brand href="#">Dashboard</b-navbar-brand>
+			<b-navbar-brand href="/">Dashboard</b-navbar-brand>
 
 			<b-collapse is-nav id="nav_collapse">
 
 				<b-navbar-nav>
-					<b-nav-item href="#" >List</b-nav-item>
+					<router-link class="nav-link" to="/dashboard">List</router-link>
 				</b-navbar-nav>
 
 				<!-- Right aligned nav items -->
 				<b-navbar-nav class="ml-auto">
 
 					<b-nav-form>
-						<b-button size="sm" variant="primary" class="mr-2 my-sm-0">Add New</b-button>
+						<b-button v-on:click="createPost()" size="sm" variant="primary" class="mr-2 my-sm-0">
+							Add New
+						</b-button>
 					</b-nav-form>
 
 					<b-nav-form>
@@ -41,7 +43,12 @@
 
 <script>
 	export default {
-		name: 'Navigation'
+		name: 'Navigation',
+		methods: {
+      createPost() {
+        this.$router.push({ name: 'post-create' })
+			}
+		}
 	}
 </script>
 

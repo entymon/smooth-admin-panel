@@ -19,6 +19,8 @@
 	}
 </script>
 
-<style scoped lang="scss">
-	.page-dashboard {}
+<style lang="scss">
+	h3.header {
+		padding: 15px 0;
+	}
 </style>
