@@ -9,7 +9,7 @@
 			<b-collapse is-nav id="nav_collapse">
 
 				<b-navbar-nav>
-					<router-link class="nav-link" to="/dashboard">List</router-link>
+					<router-link class="nav-link" :to="{ name: 'post-list' }">List</router-link>
 				</b-navbar-nav>
 
 				<!-- Right aligned nav items -->
