@@ -7,7 +7,7 @@
 					<h3>List of posts</h3>
 				</div>
 				<div class="col text-right">
-					<b-button v-on:click="createPost()" size="sm" variant="primary" class="mr-2 my-sm-0">
+					<b-button @click="createPost" size="sm" variant="primary" class="mr-2 my-sm-0">
 						Add new post
 					</b-button>
 				</div>
@@ -30,7 +30,8 @@
   export default {
     name: 'ListPage',
 		data: () => ({
-      deleteModalShow: false
+      deleteModalShow: false,
+      postUuid: ''
 		}),
     components: {
       'list-row': PostListRow,
@@ -48,7 +49,8 @@
 				this.$router.push({ name: 'post', params: { uuid: postUuid } })
 			},
       deleteAlert(postUuid) {
-				this.deleteModalShow = true;
+        this.postUuid = postUuid;
+        this.deleteModalShow = !this.deleteModalShow;
 			}
 		}
   }

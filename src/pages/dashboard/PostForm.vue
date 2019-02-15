@@ -1,6 +1,6 @@
 <template>
 	<div class="container-fluid">
-		<h3 class="header">Create New Post</h3>
+		<h3 class="header">{{ postFormUI.title }}</h3>
 
 		<b-form @submit="onSubmit">
 
@@ -62,6 +62,9 @@
     name: 'PostCreate',
     data: () => ({
       post: post,
+			postFormUI: {
+        title: ''
+			}
 		}),
 		computed: {
       posts() {
@@ -70,9 +73,11 @@
 		},
 		beforeMount() {
 			if (this.$route.params.uuid) {
-				this.post = _.find(this.posts, {uuid: this.$route.params.uuid})
+				this.postFormUI.title = `Update Post`;
+				this.post = _.find(this.posts, {uuid: this.$route.params.uuid});
 				// axios.get('/get_post_by_uuid', res => {})
 			} else {
+        this.postFormUI.title = `Create New Post`;
 				this.post = post;
         this.post = { ...{
           uuid: uuid(),
