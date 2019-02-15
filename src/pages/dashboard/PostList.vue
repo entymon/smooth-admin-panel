@@ -47,7 +47,8 @@
     },
 		computed: {
       posts() {
-        return this.$store.state.posts
+        return (this.$store.state.postResults.length === 0) ?
+					this.$store.state.posts : this.$store.state.postResults;
 			}
 		},
 		methods: {

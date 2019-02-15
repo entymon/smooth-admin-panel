@@ -29,6 +29,7 @@ const store = new Vuex.Store({
         image: 'obrazek'
       }
     ],
+    postResults: []
   },
   getters: {
     getUuids: (state) => {
@@ -52,6 +53,9 @@ const store = new Vuex.Store({
     },
     REMOVE_POST(state, payload) {
       _.remove(state.posts, post => post.uuid === payload.uuid);
+    },
+    SET_POSTS_RESULTS(state, payload) {
+      state.postResults = payload
     }
   },
   actions: {
@@ -61,6 +65,15 @@ const store = new Vuex.Store({
     removePost: (context, payload) => {
       context.commit('REMOVE_POST', payload)
     },
+    /**
+     * Search posts and set results in mutations
+     * @param context
+     * @param payload
+     */
+    searchPost: (context, payload) => {
+      const posts = context.getters.search(payload);
+      context.commit('SET_POSTS_RESULTS', posts)
+    }
   }
 });
 
