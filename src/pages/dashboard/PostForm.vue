@@ -44,7 +44,7 @@
 					<b-button type="submit" variant="primary">Submit</b-button>
 				</div>
 				<div class="col align-self-end text-right">
-					<b-button type="submit" variant="danger" @click="dismiss()">Cancel</b-button>
+					<b-button variant="danger" @click="dismiss()">Cancel</b-button>
 				</div>
 			</div>
 
@@ -87,9 +87,7 @@
         }}
 			}
 		},
-		updated() {
-      console.log(this.post)
-		},
+		updated() {},
 		methods: {
       onSubmit(event) {
         event.preventDefault();

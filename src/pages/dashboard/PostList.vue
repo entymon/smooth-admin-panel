@@ -4,7 +4,7 @@
 		<b-modal
 				v-model="deleteModalShow"
 				centered
-
+				@ok="deletePost"
 		>
 			Do you want delete post {{ post.title }}
 		</b-modal>
@@ -48,9 +48,6 @@
 		computed: {
       posts() {
         return this.$store.state.posts
-			},
-			postByUuid() {
-        return this.$store.getters.getByUuid(this.postUuid)
 			}
 		},
 		methods: {
@@ -68,6 +65,10 @@
           throw new Error(`Post for UUID: ${postUuid} does not exist`)
 				}
         this.deleteModalShow = !this.deleteModalShow;
+			},
+      deletePost() {
+        this.$store.dispatch('removePost', this.post);
+        // valid and send form
 			}
 		}
   }

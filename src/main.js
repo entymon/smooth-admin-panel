@@ -5,6 +5,7 @@ import wysiwyg from 'vue-wysiwyg';
 import App from './App.vue';
 import Routes from './routes';
 import Store from './store';
+import './filters';
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);

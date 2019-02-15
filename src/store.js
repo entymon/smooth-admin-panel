@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import _ from 'lodash'
 
 Vue.use(Vuex);
 
@@ -48,12 +49,18 @@ const store = new Vuex.Store({
     UPDATE_POST(state, payload) {
       _.remove(state.posts, post => post.uuid === payload.uuid);
       state.posts.push(payload)
+    },
+    REMOVE_POST(state, payload) {
+      _.remove(state.posts, post => post.uuid === payload.uuid);
     }
   },
   actions: {
     updatePost: (context, payload) => {
       context.commit('UPDATE_POST', payload)
-    }
+    },
+    removePost: (context, payload) => {
+      context.commit('REMOVE_POST', payload)
+    },
   }
 });
 
