@@ -39,7 +39,14 @@
 				</div>
 			</b-form-group>
 
-			<b-button type="submit" variant="primary">Submit</b-button>
+			<div class="row">
+				<div class="col">
+					<b-button type="submit" variant="primary">Submit</b-button>
+				</div>
+				<div class="col align-self-end text-right">
+					<b-button type="submit" variant="danger" @click="dismiss()">Cancel</b-button>
+				</div>
+			</div>
 
 		</b-form>
 	</div>
@@ -48,16 +55,13 @@
 <script>
 	import axios from 'axios';
 	import _ from 'lodash';
+  import uuid from 'uuid/v1';
+  import post from '../../objects/post';
 
   export default {
     name: 'PostCreate',
     data: () => ({
-      post: {
-        title: '',
-				body: '',
-				image: {},
-				author: 'entymon'
-			},
+      post: post,
 		}),
 		computed: {
       posts() {
@@ -69,12 +73,13 @@
 				this.post = _.find(this.posts, {uuid: this.$route.params.uuid})
 				// axios.get('/get_post_by_uuid', res => {})
 			} else {
-        this.post = {
-          title: '',
-					body: '',
-					image: {},
-          author: 'entymon'
-        }
+				this.post = post;
+        this.post = { ...{
+          uuid: uuid(),
+					author: 'entymon',
+					createAt: new Date(),
+					updateAt: new Date(),
+        }}
 			}
 		},
 		updated() {
@@ -82,13 +87,15 @@
 		},
 		methods: {
       onSubmit(event) {
-        event.preventDefault()
-				this.$store.dispatch('updatePost', this.post)
-
+        event.preventDefault();
+				this.$store.dispatch('updatePost', this.post);
+        this.$router.push({ name: 'post-list' })
 				// valid and send form
 			},
       onFileSelected(event) {
         this.post.image = event.target.files[0];
+        // save to S3 with a tag
+        console.log(event.target.files[0])
 			},
 			onUpload() {
         const fd = new FormData();
@@ -100,6 +107,12 @@
 				}).then(res => {
 					console.log(res)
 				})
+			},
+      /**
+			 * Dismiss changes and go to list
+       */
+			dismiss() {
+        this.$router.push({ name: 'post-list' })
 			}
 		}
   }

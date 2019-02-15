@@ -1,16 +1,26 @@
 <template>
-	<div class="container-fluid">
-		<div class="row my-3">
-			<div class="col">
-				<h3>List of posts</h3>
+	<div>
+		<div class="container-fluid">
+
+			<div class="row my-3">
+				<div class="col">
+					<h3>List of posts</h3>
+				</div>
+				<div class="col text-right">
+					<b-button v-on:click="createPost()" size="sm" variant="primary" class="mr-2 my-sm-0">
+						Add new post
+					</b-button>
+				</div>
 			</div>
-			<div class="col text-right">
-				<b-button v-on:click="createPost()" size="sm" variant="primary" class="mr-2 my-sm-0">
-					Add new post
-				</b-button>
-			</div>
+			<list-row
+					:key="index"
+					:index="index"
+					:post="post"
+					v-for="(post, index) in posts"
+					@editPost="updatePost"
+					@deletePost="deleteAlert"
+			/>
 		</div>
-		<list-row :key="post.uuid" v-for="post in posts" :post="post" @editPost="updatePost"/>
 	</div>
 </template>
 
@@ -19,8 +29,11 @@
 
   export default {
     name: 'ListPage',
+		data: () => ({
+      deleteModalShow: false
+		}),
     components: {
-      'list-row': PostListRow
+      'list-row': PostListRow,
     },
 		computed: {
       posts() {
@@ -33,6 +46,9 @@
       },
       updatePost(postUuid) {
 				this.$router.push({ name: 'post', params: { uuid: postUuid } })
+			},
+      deleteAlert(postUuid) {
+				this.deleteModalShow = true;
 			}
 		}
   }
