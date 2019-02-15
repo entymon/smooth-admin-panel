@@ -31,7 +31,17 @@ const store = new Vuex.Store({
   },
   getters: {
     getUuids: (state) => {
-      return state.posts.map(post => post.uuid)
+      return state.posts.map(item => item.uuid)
+    },
+    search: (state) => {
+      return keyword => state.posts.filter(item =>
+        item.title.indexOf(keyword) !== -1
+      );
+    },
+    getByUuid: (state) => {
+      return (keyword) => state.posts.filter(item =>
+        item.uuid === keyword
+      );
     }
   },
   mutations: {

@@ -1,5 +1,14 @@
 <template>
 	<div>
+
+		<b-modal
+				v-model="deleteModalShow"
+				centered
+
+		>
+			Do you want delete post {{ post.title }}
+		</b-modal>
+
 		<div class="container-fluid">
 
 			<div class="row my-3">
@@ -31,7 +40,7 @@
     name: 'ListPage',
 		data: () => ({
       deleteModalShow: false,
-      postUuid: ''
+      post: ''
 		}),
     components: {
       'list-row': PostListRow,
@@ -39,6 +48,9 @@
 		computed: {
       posts() {
         return this.$store.state.posts
+			},
+			postByUuid() {
+        return this.$store.getters.getByUuid(this.postUuid)
 			}
 		},
 		methods: {
@@ -49,7 +61,12 @@
 				this.$router.push({ name: 'post', params: { uuid: postUuid } })
 			},
       deleteAlert(postUuid) {
-        this.postUuid = postUuid;
+        const values = this.$store.getters.getByUuid(postUuid);
+        if (values.length !== 0) {
+          this.post = values[0]
+				} else {
+          throw new Error(`Post for UUID: ${postUuid} does not exist`)
+				}
         this.deleteModalShow = !this.deleteModalShow;
 			}
 		}
